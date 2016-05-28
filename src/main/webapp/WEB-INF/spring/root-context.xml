@@ -23,7 +23,7 @@
     <context:component-scan base-package="dao" />
 
 
-    <!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
+       <!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
     <!-- <import resource="data.xml" />-->
 
     <!-- Файл с настройками безопасности -->
@@ -37,11 +37,13 @@
 
 
 
+    <bean id="employeeController" class="controller.EmployeeController">
+        <property name="contactService" ref="jdbcEmployeeDao"/>
+    </bean>
 
 
-
-    <bean class="controller.EmployeeController" id="employeeController">
-             <property name="contactService" ref="employeeDao"/>
+    <bean id="jdbcEmployeeDao" class="dao.JdbcEmployeeDao">
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 
 
@@ -58,9 +60,7 @@
         <property name="acquireIncrement" value="${jdbc.acquire.increment}"/>
     </bean>
 
-    <bean id="employeeDao" class="dao.JdbcEmployeeDao">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
+
 
     <!-- Настройки бина dataSource будем хранить в отдельном файле -->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
