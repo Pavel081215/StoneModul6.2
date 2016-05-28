@@ -1,53 +1,45 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
-<welcome-file-list>
-    <welcome-file>firstNO.html</welcome-file>
-</welcome-file-list>
+    <!-- Reads request input using UTF-8 encoding -->
 
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+       <!-- Handles all requests into the application -->
     <servlet>
-        <servlet-name>loginServlet</servlet-name>
-        <servlet-class>work.controller.LoginServlet</servlet-class>
+        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                /WEB-INF/spring/appServlet/servlet-context.xml
+            </param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>loginServlet</servlet-name>
-        <url-pattern>/log</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>questionController</servlet-name>
-        <servlet-class>work.controller.QuestionController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>questionController</servlet-name>
-        <url-pattern>/question</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>answerController</servlet-name>
-        <servlet-class>work.controller.AnswerController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>answerController</servlet-name>
-        <url-pattern>/answer</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>admin</servlet-name>
-        <servlet-class>work.controller.AdminController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>admin</servlet-name>
-        <url-pattern>/admin</url-pattern>
+        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
 </web-app>
