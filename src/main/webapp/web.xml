@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+    <!-- Описание корневого контейнера, разделяемого всеми сервлетами и фильтрами -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/spring/root-context.xml
+        </param-value>
+    </context-param>
+
+
 
     <!-- Reads request input using UTF-8 encoding -->
-
+    <!-- Фильтр для перекодировки в utf8 -->
     <filter>
+
         <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
@@ -25,6 +35,7 @@
     </filter-mapping>
 
        <!-- Handles all requests into the application -->
+    <!-- Базовый сервлет, обрабатывает все запросы к приложению -->
     <servlet>
         <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -41,5 +52,20 @@
         <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!-- Создаёт контейнер Spring, разделяемый всеми сервлетами и фильтрами -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- Добавим в web.xml фильтр безопасности, действующий на всё приложение -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 </web-app>

@@ -2,7 +2,7 @@
 <suite name="Suite1">
     <test name="Executor Test">
         <classes>
-            <class name="work.worker.ParserMatchTest"/>
+            <class name=" "/>
         </classes>
     </test>
 </suite>
