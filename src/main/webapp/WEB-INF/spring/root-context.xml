@@ -26,25 +26,25 @@
        <!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
     <!-- <import resource="data.xml" />-->
 
-    <!-- Файл с настройками безопасности -->
-    <import resource="security.xml" />
+    <!-- Файл с настройками безопасности
+    <import resource="security.xml" />-->
 
 
     <!-- Root Context: определяет ресурсы, доступные всему приложению, всем сервлетам -->
 
-    <!-- Включаем опцию использования конфигурационных аннотаций (@Annotation-based configuration)-->
-    <context:annotation-config />
+    <!-- Включаем опцию использования конфигурационных аннотаций (@Annotation-based configuration)
+    <context:annotation-config />-->
 
 
 
-    <bean id="employeeController" class="controller.EmployeeController">
+  <!-- <bean id="employeeController" class="controller.EmployeeController">
         <property name="contactService" ref="jdbcEmployeeDao"/>
     </bean>
 
 
     <bean id="jdbcEmployeeDao" class="dao.JdbcEmployeeDao">
         <property name="dataSource" ref="dataSource"/>
-    </bean>
+    </bean>-->
 
 
 
