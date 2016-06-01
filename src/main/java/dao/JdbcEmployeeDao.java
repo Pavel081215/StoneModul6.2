@@ -6,8 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -19,6 +18,7 @@ import java.util.List;
 
 @Repository
 public class JdbcEmployeeDao implements EmployeeService {
+    /*
     private static final Logger logger = LoggerFactory.getLogger(JdbcEmployeeDao.class);
 
     @Autowired
@@ -73,4 +73,5 @@ public class JdbcEmployeeDao implements EmployeeService {
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
+    */
 }
