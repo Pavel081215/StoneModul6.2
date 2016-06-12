@@ -2,12 +2,13 @@
 <%@ page session="false" %>
 <html>
 <head>
-    <title>Home</title>
+    <title>Admin</title>
 </head>
 <body>
 <h1>
-    Hello world1111!
+    Hello 333333 world!
 </h1>
+<a href="<c:url value="/admin"  />">
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
