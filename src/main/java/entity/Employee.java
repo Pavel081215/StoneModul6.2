@@ -1,40 +1,21 @@
 package entity;
 
 
-
-
-
 public class Employee {
 
-
-
-
     private Integer id;
-
-
-    private String surname;
-
-
-  /* private String name;
-
-
     private String birthDay;
-
-
+    private String name;
+    private String surname;
     private long phone;
-
-
     private String position;
-
-
-    private long salary;*/
-
+    private long salary;
 
     public Integer getId() {
         return id;
     }
 
-   /* public String getSurname() {
+    public String getSurname() {
         return surname;
     }
 
@@ -60,13 +41,13 @@ public class Employee {
 
     public void setSalary(long salary) {
         this.salary = salary;
-    }*/
+    }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-   /* public void setSurname(String surname) {
+    public void setSurname(String surname) {
         this.surname = surname;
     }
 
@@ -84,7 +65,7 @@ public class Employee {
 
     public void setPosition(String position) {
         this.position = position;
-    }*/
+    }
 
 
 }
