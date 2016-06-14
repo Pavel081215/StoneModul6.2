@@ -1,10 +1,13 @@
 package controller;
+
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import dao.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +18,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController {
+
+    @Autowired
+    private EmployeeService employeeService;
+
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+
+    @RequestMapping("/home")
+    public String visitHome() {
+        return "home";
+    }
+
+    @RequestMapping("/admin")
+    public String visitAdmin() {
+        return "admin";
+    }
+
+    @RequestMapping("/staff")
+    public String visitStaff() {
+        return "staff";
+    }
+
+
 
     /*   private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -50,7 +78,6 @@ public class HomeController {
         return "admin";
     }
 */
-
 
 
 }

@@ -1,10 +1,14 @@
 package entity;
 
 
+import java.sql.Date;
+
+//import java.util.Date;
+
 public class Employee {
 
     private Integer id;
-    private String birthDay;
+    private Date birthDay;
     private String name;
     private String surname;
     private long phone;
@@ -23,7 +27,7 @@ public class Employee {
         return name;
     }
 
-    public String getBirthDay() {
+    public Date getBirthDay() {
         return birthDay;
     }
 
@@ -55,7 +59,7 @@ public class Employee {
         this.name = name;
     }
 
-    public void setBirthDay(String birthDay) {
+    public void setBirthDay(Date birthDay) {
         this.birthDay = birthDay;
     }
 

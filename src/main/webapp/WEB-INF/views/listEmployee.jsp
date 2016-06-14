@@ -13,9 +13,6 @@
 <form:form method="post"
            action="${pageContext.request.contextPath}/listEmployee"
            commandName="User">
-
-
-
 </form:form>
 
 
@@ -41,11 +38,6 @@
                 <th>&#10;</th>
             </tr>
         </c:forEach>
-
-
-
-
-
     </table>
 </c:if>
 

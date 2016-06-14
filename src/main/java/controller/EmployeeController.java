@@ -7,9 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,58 +30,59 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @RequestMapping("/home")
-    public String visitHome() {
-
-        // do something before returning view name
-
-        return "home";
-    }
-
-    @RequestMapping("/admin")
-    public String visitAdmin() {
-
-        // do something before returning view name
-        return "admin";
-    }
-
 
     @RequestMapping("/listEmployee")
     public ModelAndView listUsers() {
-        Employee employee = new Employee();
         List<Employee> employees = new ArrayList<>();
-      /*  Employee employee1 = new Employee();
-
-        employee.setId(1);
-        employee.setSurname("4");
-        employee.setBirthDay("6");
-        employee.setName("ggg");
-        employee.setPhone(4l);
-        employee.setPosition("djdj");
-        employee.setSalary(3455);
-        employees.add(employee);
-        employee1.setId(2);
-        employee1.setSurname("ff");
-        employee1.setBirthDay("rrrrr");
-        employee1.setName("bbbbb");
-        employee1.setPhone(4);
-        employee1.setPosition("555");
-        employee1.setSalary(3);
-        employees.add(employee1);*/
-
-
-        // get user list from DAO...
         employees.addAll(employeeService.getAll());
-
         ModelAndView modelView = new ModelAndView("listEmployee");
         modelView.addObject("listUser", employees);
-
         return modelView;
+    }
+
+    @RequestMapping("/addEmployee")
+    public String addEmployee(@ModelAttribute("Employee") Employee employee, BindingResult result) {
+        employeeService.addEmployee(employee);
+        return "start";
+    }
+
+    @RequestMapping("/add")
+    public String visitAdd() {
+        return "addEmployee";
+    }
+
+    @RequestMapping("/search")
+    public String visitSearch() {
+        return "searchEmployee";
+    }
+
+    @RequestMapping("/searchEmployee")
+    public ModelAndView searchEmployee(@ModelAttribute("name") String name) {
+        Employee employee = new Employee();
+        employee = employeeService.getEmployee(name);
+        if (employee.getId() != null) {
+            ModelAndView modelView = new ModelAndView("searchEmployeeEnter");
+            modelView.addObject("Employee", employee);
+            return modelView;
+        } else {
+            ModelAndView modelView = new ModelAndView("searchError");
+            return modelView;
+        }
+    }
+
+    @RequestMapping("/delete")
+    public String visitDelete() {
+        return "deleteEmployee";
     }
 
 
 
+    @RequestMapping("/deleteEmployee")
+    public String deleteEmployee(@ModelAttribute("name") String name) {
 
+        employeeService.deleteEmployee(name);
+        return"removedSuccessfully";
+    }
 
 
 

@@ -2,6 +2,7 @@ package dao;
 
 import entity.Employee;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -10,6 +11,11 @@ import java.util.List;
 public interface EmployeeService {
 
     public List<Employee> getAll();
+
+    public void addEmployee(Employee employee);
+
+    public Employee getEmployee(String name);
+    public void deleteEmployee(String name);
 
   /*  public List<Employee> listEmplyee();
 
