@@ -106,6 +106,7 @@ public class JdbcEmployeeDao implements EmployeeService {
     public void deleteEmployee(String name) {
 
         logger.info("Connection start");
+
         try (Connection connection = dataSource.getConnection();
              PreparedStatement stmt = connection.prepareStatement("DELETE  FROM employee WHERE name  = ?;")) {
             stmt.setString(1, name);
@@ -119,8 +120,12 @@ public class JdbcEmployeeDao implements EmployeeService {
         }
         logger.info("Connection finish");
 
-
     }
+
+
+
+
+
 
 
 

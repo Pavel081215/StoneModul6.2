@@ -27,9 +27,9 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/home")
+    @RequestMapping("/order")
     public String visitHome() {
-        return "home";
+        return "order";
     }
 
     @RequestMapping("/admin")
